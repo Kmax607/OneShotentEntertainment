@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Team - One Shot Entertainment</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="One Shot Logo Formatted.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .team-section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .team-section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .team-image {
+      flex: 1 1 300px;
+      max-width: 300px;
+      border-radius: 12px;
+      border: 2px solid #e50914;
+    }
+
+    .team-text {
+      flex: 2 1 400px;
+    }
+
+    .team-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #e50914;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .team-section,
+      .team-section.reverse {
+        flex-direction: column;
+        text-align: center;
+      }
+      .team-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo" onclick="location.href='index.html'">
+    <img src="One Shot Logo Formatted.png" alt="One Shot Logo" class="logo-img">
+  </div>
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+  <nav class="nav-links" id="nav-links">
+    <a href="OurStory.html">Our Story</a> |
+    <a href="OurTeam.html">Our Team</a> |
+    <a href="OurFilms.html">Our Films</a> |
+    <a href="OurGoals.html">Our Goals</a> |
+    <a href="OurFeature.html">Our Feature</a>
+  </nav>
+</header>
+
+<main class="intro">
+  <h1 class="red-heading fade-in">Our Team</h1>
+
+  <section class="team-section fade-in">
+    <img src="KIERAN%20SHERRY.jpg" alt="Kieran Sherry" class="team-image">
+    <div class="team-text">
+      <div class="team-name">Kieran Sherry</div>
+      <p>Tall and cocky, yet sensitive and caring. A horror fanatic obsessed with bringing his exact visions to life. The biggest Star Wars fan this side of the Outer Rim and an avid Gravity Falls impressionist. A talented writer, director, and actor honing his craft at Ithaca College (but mostly on film sets with his friends). One Shot's creative engine and the writer/director of our first feature film.</p>
+    </div>
+  </section>
+
+  <section class="team-section reverse fade-in">
+    <img src="JAKE%20RUDERMAN.JPG" alt="Jake Ruderman" class="team-image">
+    <div class="team-text">
+      <div class="team-name">Jake Ruderman</div>
+      <p>Short, with curly hair and a stache that’s got a mind of its own. A sharp, funny, and always curious mind who chose to study the world rather than only film, diving into politics, management, and everything in between. The brains of One Shot and its voice of reason, applying his expansive range of knowledge to filmmaking as the producer who keeps things from spiraling. Blends business with a love for storytelling, a perfect mix of realism and artistic integrity.</p>
+    </div>
+  </section>
+
+  <section class="team-section fade-in">
+    <img src="DANIEL%20IRWIN.JPG" alt="Daniel Irwin" class="team-image">
+    <div class="team-text">
+      <div class="team-name">Daniel Lloyd Irwin</div>
+      <p>Messy-haired, unassuming, the nicest guy in every room, incredibly perceptive, with a memory like a synthetic, especially when it comes to anything Lego Ninjago. An incredibly apt writer of character and emotion, with a taste for the ultra-complex, Nolan-esque tales of reality-bending and time travel. Also honing his writing and acting crafts at Ithaca College, both in the classroom and on set. The glue that holds One Shot together in every possible way and the star of our festival-accepted short film <strong>Dead and Buried.</strong></p>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 One Shot Entertainment</p>
+  <div class="socials">
+    <a href="https://www.instagram.com/one.shotentertainment/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@oneshotentertainment00" target="_blank">YouTube</a>
+    <a href="https://www.tiktok.com/@one.shotentertainment" target="_blank">TikTok</a>
+    <a href="mailto:oneshotentertainment00@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+</body>
+</html>

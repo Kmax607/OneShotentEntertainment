@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Body Count - One Shot Entertainment</title>
+  <link rel="icon" href="One Shot Logo Formatted.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Courier Prime', monospace;
+      margin: 0;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #e50914;
+      background: linear-gradient(to bottom, #000 0%, #1a0000 30%, #300000 60%, #0a0000 100%);
+      background-attachment: fixed;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0a0a0a;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #e50914;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(229,9,20,0.3);
+    }
+    .logo-img { height: 60px; cursor: pointer; display: block; }
+    .nav-links a {
+      color: #e50914;
+      text-decoration: none;
+      /*margin: 0 0.5rem;*/
+      /*font-weight: 700;*/
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #ff1a1a;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: #e50914;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    .content {
+      max-width: 1000px;
+      width: 90%;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      margin: 2rem auto 3rem;
+      color: #e50914;
+      text-shadow: 0 0 6px rgba(255,0,0,0.4);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin: 0.75rem 0 1rem;
+      color: #ff1a1a;
+      text-shadow: 0 0 15px #e50914, 0 0 30px #660000;
+      letter-spacing: 3px;
+      animation: pulse 2.7s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { text-shadow: 0 0 10px #e50914, 0 0 20px #e50914; }
+      50% { text-shadow: 0 0 20px #ff3333, 0 0 40px #ff0000; }
+    }
+
+    .content p { margin: 1.25rem 0; }
+
+    .highlight {
+      font-weight: bold;
+      color: #ff4d4d;
+      text-shadow: 0 0 10px #ff1a1a;
+    }
+    .section-title {
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #ff3333;
+      margin-top: 1.5rem;
+      text-shadow: 0 0 10px #ff1a1a;
+    }
+
+    /* Video */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 880px;
+      margin: 1.25rem auto;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255,0,0,0.25);
+      background: #000;
+    }
+
+    .campaign-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+
+    /* Scary Button */
+    a.link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: linear-gradient(to bottom, #8b0000, #e50914, #6b0000);
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      animation: pulseButton 2s infinite alternate;
+      box-shadow: 0 0 20px rgba(255,0,0,0.3);
+    }
+
+    @keyframes pulseButton {
+      from { box-shadow: 0 0 15px rgba(255,0,0,0.5), inset 0 0 10px rgba(255,50,50,0.3); }
+      to { box-shadow: 0 0 30px rgba(255,0,0,0.8), inset 0 0 20px rgba(255,50,50,0.6); }
+    }
+
+    a.link::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20%;
+      width: 60%;
+      height: 12px;
+      background: radial-gradient(circle at top, rgba(139,0,0,0.8) 20%, transparent 80%);
+      animation: drip 2s infinite ease-in-out;
+    }
+
+    @keyframes drip {
+      0%,100% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(5px); opacity: 1; }
+    }
+
+    a.link:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to bottom, #ff1a1a, #b30000);
+    }
+
+    /* Form Container */
+    .form-container {
+      width: 100%;
+      max-width: 1000px;
+      border: 2px solid #e50914;
+      border-radius: 10px;
+      background: rgba(20,0,0,0.85);
+      padding: 1rem;
+      margin: 2rem auto 4rem;
+      box-shadow: 0 0 25px rgba(255,0,0,0.2);
+    }
+
+    iframe {
+      width: 100%;
+      height: 1500px;
+      border: none;
+      display: block;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      width: 100%;
+      background: #0a0a0a;
+      color: #e50914;
+      padding: 1.5rem;
+      border-top: 2px solid #e50914;
+      box-shadow: 0 -4px 20px rgba(229,9,20,0.3);
+    }
+    .footer .socials a {
+      color: #e50914;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer .socials a:hover {
+      color: #fff;
+      text-shadow: 0 0 8px #ff4d4d;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; background: #000; width: 100%; text-align: center; padding: 1rem 0; }
+      .nav-links.show { display: flex; }
+      h1 { font-size: 2.3rem; }
+      .content { width: 94%; font-size: 1rem; }
+      .form-container iframe { height: 1200px; }
+      .video-wrapper { max-width: 95%; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo" onclick="location.href='index.html'">
+    <img src="One Shot Logo Formatted.png" alt="One Shot Logo" class="logo-img">
+  </div>
+
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+
+  <nav class="nav-links" id="nav-links">
+    <a href="OurStory.html">Our Story</a> |
+    <a href="OurTeam.html">Our Team</a> |
+    <a href="OurFilms.html">Our Films</a> |
+    <a href="OurGoals.html">Our Goals</a> |
+    <a href="BodyCount.html">Our Feature</a>
+  </nav>
+</header>
+
+<main class="content">
+  <h1>BODY COUNT</h1>
+
+  <div class="video-wrapper">
+    <iframe
+            class="campaign-video"
+            src="https://drive.google.com/file/d/1VVdnpefF-FdsSgHXqUJBJfNLVnAZZv1k/preview"
+            allow="autoplay; fullscreen"
+            allowfullscreen>
+    </iframe>
+  </div>
+
+  <p><span class="highlight">BODY COUNT</span> is One Shot Entertainment’s first feature film.</p>
+
+  <p>Written and Directed by <span class="highlight">Kieran Sherry</span>, Body Count is the ultimate love letter to the horror genre.</p>
+
+  <p><span class="section-title">Logline:</span> A group of teens, a summer camp, and a killer… hasn’t this been done to death?</p>
+
+  <p><span class="section-title">Synopsis:</span> Amber Thompson is the quintessential mean girl. Gorgeous, cruel, and popular. But when she’s killed on the first night of camp, her story doesn’t end. She wakes up and finds herself in another horror movie: new world, new style, but the same target on her back...</p>
+
+  <p>As she spirals through increasingly unhinged realities, Amber realizes the truth. She’s trapped in a cycle of punishment, forced to die, because the genre has decided who she is. But with each reset, she grows sharper, angrier, and more self-aware, until finally, she's ready to break the rules of horror altogether.</p>
+
+  <p>Friendships, sleepovers, high-school plays, short films, everything we’ve experienced has led to this movie. Now nearing the end of college, we believe that producing a feature will further our careers, teach us invaluable lessons, and ultimately serve as a fitting conclusion to our years of schooling.</p>
+
+  <p>In the tradition of all the great independent horror movies before us… <span class="highlight">we have no money.</span> But that won’t stop us! We are currently raising the necessary funds, and searching for cast and crew members who will bring this project to life!</p>
+
+  <p>So if this sounds like a movie you’d like to see… <span class="highlight">YOU can help bring it to life!</span> Our fundraising campaign is now live!</p>
+
+  <p style="text-align:center;">
+    <a class="link" href="#" target="_blank" rel="noopener">Fund Our Campaign Here</a>
+  </p>
+
+  <p>There are also plenty of ways to help this movie outside of funding! Keep up with us on social media, share our project with your family and friends, and if you or anyone you know would like to join the cast or crew for this film in any capacity, contact us below.</p>
+
+  <div class="form-container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc-7XbF_esJmCRg6DgMv4vTzZAVBPrFzW50ubQ5w1DMgMn9MQ/viewform?embedded=true">Loading…</iframe>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2025 One Shot Entertainment</p>
+  <div class="socials">
+    <a href="https://www.instagram.com/one.shotentertainment/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com/@oneshotentertainment00" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.tiktok.com/@one.shotentertainment" target="_blank" rel="noopener">TikTok</a>
+    <a href="mailto:oneshotentertainment00@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  });
+</script>
+</body>
+</html>
