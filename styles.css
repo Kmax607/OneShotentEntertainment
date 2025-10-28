@@ -59,6 +59,7 @@ body {
     font-weight: 500;
 }
 
+
 .nav-links a:hover {
     color: #e50914;
 }
@@ -329,6 +330,10 @@ h1.red-heading {
 }
 
 @media (max-width: 600px) {
+
+    .divider {
+        display: none;
+    }
 
     #typing-title {
             font-size: 1.69rem;
