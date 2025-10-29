@@ -51,9 +51,10 @@
         }
 
         .story-image {
-            flex: 1 1 400px;
-            max-width: 500px;
             width: 100%;
+            max-width: 500px;
+            height: auto;               /* prevents stretching */
+            object-fit: cover;          /* keeps aspect ratio while filling space */
             border-radius: 10px;
             border: 2px solid #e50914;
         }
