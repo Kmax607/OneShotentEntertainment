@@ -207,6 +207,7 @@
     /* Responsive */
     @media (max-width: 600px) {
 
+      /* hide dividers in dropdown */
       .divider {
         display: none;
       }
@@ -217,6 +218,7 @@
 
       .nav-links a {
         font-size: 0.76rem;
+        display: block;
       }
 
       .logo {
@@ -225,27 +227,31 @@
 
       .menu-toggle {
         font-size: 1.5rem;
+        display: block; /* Show the hamburger */
       }
 
-      .menu-toggle {
-        display: block;        /* Show the hamburger */
-      }
-
+      /* --- SLIDE DOWN ANIMATION VERSION OF NAV-LINKS --- */
       .nav-links {
         position: absolute;
-        top: 70px;             /* just below navbar */
+        top: 70px;
         right: 0;
         background: #000;
         width: 200px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0;
         padding: 1rem;
-        display: none;         /* hidden by default */
+        gap: 0;
+
+        /* sliding animation properties */
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
       }
 
       .nav-links.show {
-        display: flex;         /* show when toggled */
+        max-height: 500px; /* large enough to reveal all links */
+        opacity: 1;
       }
 
       .nav-links a {
@@ -253,6 +259,7 @@
         width: 100%;
       }
     }
+
 
   </style>
 </head>
@@ -321,29 +328,7 @@
   </div>
 </footer>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
